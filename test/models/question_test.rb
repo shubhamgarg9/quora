@@ -31,9 +31,20 @@ class QuestionTest < ActiveSupport::TestCase
 		assert_not @question.valid?
 	end
 
+	test "description not be too short" do
+		@question.description = "a"*10
+		assert_not @question.valid?
+	end
+
 	test "chef_id should be present" do
 		@question.user_id = nil
 		assert_not @question.valid?
 	end
+
+	test "description should be present" do
+		@question.description = " "
+		assert_not @question.valid?
+	end
+
 
 end

@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
 			flash[:success] = "your question got created successfully"
 			redirect_to questions_path
 		else
-
+			render :new
 		end
 	end
 
