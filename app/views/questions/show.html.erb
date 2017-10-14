@@ -6,10 +6,11 @@
 		<p><h5>Question asked by: <%= @question.user.username %></h5></p>
 	</div>
 	<div class="col-md-8">
+		<%= link_to "edit question", edit_question_path(@question), class: "btn btn-success pull-right" %>
 		<h3><%= @question.text %></h3>
 		<div class="well">
 			<p><strong>Details about question</strong></p>
-			<%= @question.description %>
+			<%= simple_format(@question.description) %>
 		</div>
 	</div>
 </div>
