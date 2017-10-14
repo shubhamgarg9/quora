@@ -1,0 +1,17 @@
+<%= render 'shared/errors', obj: @question %>
+
+<div class="row">
+	<div class="well col-md-8 col-md-offset-2 ">
+		<%= form_for @question do |f| %>
+		
+			<%= f.label :text %>
+			<%= f.text_field :text %>
+
+			<%= f.label :description %>
+			<%= f.text_area :description,rows: 6 %>
+
+			<%= f.submit(@question.new_record? ? 'post question' : 'edit question', class: "btn btn-success") %>
+
+		<% end %>
+	</div>
+</div>
