@@ -3,10 +3,11 @@ require 'test_helper'
 class QuestionTest < ActiveSupport::TestCase
 
 	def setup
-		@question = Question.new(text: "cheeti kaali ku hoti h", description: "pata ni ku kar rakha h kambaqt ko kala")
+		@user = User.create(username: "bob", email: "bob@example.com")    # hitting a sandbox and not database
+		@question = @user.questions.new(text: "cheeti kaali ku hoti h", description: "pata ni ku kar rakha h kambaqt ko kala")
 	end
 
-	test "question should be valid" do
+	test "question should be valid" do    # need to set create coz here it would fail otherwise
 		assert @question.valid?
 	end
 
@@ -27,6 +28,11 @@ class QuestionTest < ActiveSupport::TestCase
 
 	test "description not to be too long" do
 		@question.description = "a" * 401
+		assert_not @question.valid?
+	end
+
+	test "chef_id should be present" do
+		@question.user_id = nil
 		assert_not @question.valid?
 	end
 
