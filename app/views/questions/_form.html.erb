@@ -2,7 +2,7 @@
 
 <div class="row">
 	<div class="well col-md-8 col-md-offset-2 ">
-		<%= form_for @question do |f| %>
+		<%= form_for(@question, html: { multipart: true }) do |f| %>
 		
 			<%= f.label :text %>
 			<%= f.text_field :text %>
@@ -10,8 +10,25 @@
 			<%= f.label :description %>
 			<%= f.text_area :description,rows: 6 %>
 
+			<span class="picture">
+				<%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+			</span>
+
 			<%= f.submit(@question.new_record? ? 'post question' : 'edit question', class: "btn btn-success") %>
 
 		<% end %>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$('#question_picture').bind('change', 
+		function() 
+		{
+			size_in_megabytes = this.files[0].size/1024/1024;
+			if(size_in_megabytes >5) 
+			{
+				alert('maiximum file size is 5MB. chosse smaaller file');
+			}
+		}
+	);
+</script>

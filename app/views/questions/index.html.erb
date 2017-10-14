@@ -12,7 +12,7 @@
 		</div>
 
  <!-- for displaying the question and description of question -->
-		<div class="col-lg-8 well">    <!--well creates a box around stuff -->
+		<div class="col-lg-6 well">    <!--well creates a box around stuff -->
 		 	<h4>
 		 		<%= link_to question.text, question_path(question) %>
 		 	</h4>
@@ -27,7 +27,10 @@
 		 		</span>
 		 	</p>
 		</div>
-
+		
+		<div class="col-md-4">
+			<%= image_tag(question.picture.url, size: "250x150", class: "gravatar") if question.picture? %>
+		</div>
 	</div>
 
 	<hr/>

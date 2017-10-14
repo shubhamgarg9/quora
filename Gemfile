@@ -26,7 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #added by me
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'pry'
-
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
 
 
 # Use ActiveModel has_secure_password

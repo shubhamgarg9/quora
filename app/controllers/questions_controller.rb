@@ -41,7 +41,7 @@ class QuestionsController < ApplicationController
 	private
 
 		def question_params
-			params.require(:question).permit(:text, :description)
+			params.require(:question).permit(:text, :description, :picture)
 		end
 
 end
