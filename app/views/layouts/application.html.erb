@@ -6,9 +6,29 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<%= yield %>
+<body>
+	<header class="navbar navbar-fixed-top navbar-default">
+		<div class="container">
+			<%= link_to "home", "", class: "btn btn-lg btn-success", id: "logo" %>
+			<div class="nav_item">
+				<%= link_to "link1", "", class: "btn btn-default btn-warning" %>
+			</div>
+			<div class="nav_item">
+				<%= link_to "link1", "", class: "btn btn-default btn-warning" %>
+			</div>
+			<div class="nav_item">
+				<%= link_to "link1", "", class: "btn btn-default btn-warning" %>
+			</div>
+		</div>
+	</header>
+
+	<div class="container">
+		<%= yield %>
+		<div class="footer">
+			<p>&copy; Quora 2017</p>
+		</div>
+	</div>
 
 </body>
 </html>
