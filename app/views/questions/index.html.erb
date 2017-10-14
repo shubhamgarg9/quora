@@ -1,0 +1,35 @@
+<h1>All Questions</h1>
+<br/>
+
+<% @questions.each do |question| %>
+	<div class="row">
+
+ <!-- for displaying image of those who asked question -->
+		<div class="col-md-2">
+			<section class="user_info center">
+				<%= gravatar_for question.user, size: 100 %>     <!--go to helpers/application_helper.rb for gravatar_for method   -->
+				<h5>User name: <%= question.user.username %></h5>
+			</section>
+		</div>
+
+ <!-- for displaying the question and description of question -->
+		<div class="col-lg-8 well">    <!--well creates a box around stuff -->
+		 	<h4>
+		 		<%= link_to question.text, question_path(question) %>
+		 	</h4>
+		 	<p>
+		 		<%= question.description %>
+		 	</p>
+		 	<p>
+		 		<span class="quiet">
+		 			<small>
+		 				<%= time_ago_in_words(question.created_at) %> ago		
+		 			</small>
+		 		</span>
+		 	</p>
+		</div>
+
+	</div>
+
+	<hr/
+<% end %>

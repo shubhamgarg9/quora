@@ -1,0 +1,17 @@
+<p><h1>QUORA</h1></p>
+
+<div class="row">
+	<div class="col-md-4 pull-right center">
+		<%= gravatar_for @question.user, size: 200 %>
+		<p><h5>Question asked by: <%= @question.user.username %></h5></p>
+	</div>
+	<div class="col-md-8">
+		<h3><%= @question.text %></h3>
+		<div class="well">
+			<p><strong>Details about question</strong></p>
+			<%= @question.description %>
+		</div>
+	</div>
+</div>
+
+<h5><%= link_to "return to home", questions_path, class: "btn btn-success btn-small" %></h5>
