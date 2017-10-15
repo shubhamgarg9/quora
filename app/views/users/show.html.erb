@@ -1,0 +1,40 @@
+<%= render 'shared/page_title', title: "User: " + @user.username %>
+
+<div class="row">
+	<div class="col-md-4 col-md-offset-4 center">
+		<%= gravatar_for @user, size: 200 %><br/>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4 col-md-offset-4 center">
+		<h3><em>Questions:</em></h3>
+		<%= will_paginate @questions %>
+	</div>
+</div>
+
+<% @questions.each do |question| %>
+	<div class= "row">
+		<div class="col-lg-6 well col-lg-offset-3">    <!--well creates a box around stuff -->
+		 	<h4>
+		 		<%= link_to question.text, question_path(question) %>
+		 	</h4>
+		 	<p>
+		 		<%= question.description %>
+		 	</p>
+		 	<p>
+		 		<span class="quiet">
+		 			<small>
+		 				created: <%= time_ago_in_words(question.created_at) %> ago		
+		 			</small>
+		 		</span>
+		 		<span class="quiet">
+		 			<small>
+		 				updated: <%= time_ago_in_words(question.updated_at) %> ago		
+		 			</small>
+		 		</span>
+		 	</p>
+		 	<%= render 'shared/follow_question', question: question %>
+		</div>
+	</div>
+<% end %>

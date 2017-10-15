@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171015063517) do
+ActiveRecord::Schema.define(version: 20171015085906) do
 
   create_table "follow_questions", force: :cascade do |t|
     t.boolean  "follow"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20171015063517) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
   end
 
 end

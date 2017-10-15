@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   	end
   end
 
+  resources :users, except: [:new]
 
-
+  get '/register' => 'users#new'
 
 end
