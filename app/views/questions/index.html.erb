@@ -1,5 +1,14 @@
 <%= render 'shared/page_title', title: "all questions" %>
 
+<ul class="nav nav-tabs">
+	<li class="active">
+		<%= link_to "questions", questions_path %>
+	</li>
+	<li>
+		<%= link_to "users", users_path %>
+	</li>
+</ul>
+
 <% @questions.each do |question| %>
 	<div class="row">
 
