@@ -6,7 +6,7 @@
  <!-- for displaying image of those who asked question -->
 		<div class="col-md-2">
 			<section class="user_info center">
-				<%= gravatar_for question.user, size: 100 %>     <!--go to helpers/application_helper.rb for gravatar_for method   -->
+				<%= link_to gravatar_for(question.user, size: 100), user_path(question.user) %>     <!--go to helpers/application_helper.rb for gravatar_for method   -->
 				<h5>User name: <%= question.user.username %></h5>
 			</section>
 		</div>
