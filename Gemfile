@@ -28,7 +28,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'pry'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
-
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

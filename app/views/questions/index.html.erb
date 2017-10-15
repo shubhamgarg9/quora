@@ -22,7 +22,12 @@
 		 	<p>
 		 		<span class="quiet">
 		 			<small>
-		 				<%= time_ago_in_words(question.created_at) %> ago		
+		 				created: <%= time_ago_in_words(question.created_at) %> ago		
+		 			</small>
+		 		</span>
+		 		<span class="quiet">
+		 			<small>
+		 				updated: <%= time_ago_in_words(question.updated_at) %> ago		
 		 			</small>
 		 		</span>
 		 	</p>
@@ -36,3 +41,5 @@
 
 	<hr/>
 <% end %>
+
+<%= will_paginate %>

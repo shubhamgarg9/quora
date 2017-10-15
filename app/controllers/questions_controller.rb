@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
 
 	def index
-		@questions = Question.all.sort_by{|follow_questions| follow_questions.thumbs_up_total}.reverse
+		@questions = Question.paginate(page: params[:page], per_page: 4)
 	end
 
 	def show

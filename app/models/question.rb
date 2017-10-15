@@ -6,6 +6,7 @@ class Question < ActiveRecord::Base
 	validates :description, presence: true, length: { minimum: 11, maximum: 400 }
 	mount_uploader :picture, PictureUploader
 	validate :picture_size
+	default_scope -> { order(updated_at: :desc) }
 
 	def thumbs_up_total
 		self.follow_questions.where(follow: true).size
