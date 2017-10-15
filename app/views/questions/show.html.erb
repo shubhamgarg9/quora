@@ -6,8 +6,9 @@
 		<p><h5>Question asked by: <%= @question.user.username %></h5></p>
 	</div>
 	<div class="col-md-8">
-		
-		<%= link_to "edit question", edit_question_path(@question), class: "btn btn-success pull-right" %>
+		<% if logged_in? and @question.user == current_user %>
+			<%= link_to "edit question", edit_question_path(@question), class: "btn btn-success pull-right" %>
+		<% end %>
 		<h3><%= @question.text %></h3>
 
 		<div class="show_question">
