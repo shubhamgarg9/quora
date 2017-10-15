@@ -1,10 +1,19 @@
 class Question < ActiveRecord::Base
 	belongs_to :user
+	has_many :follow_questions
 	validates :user_id, presence: true
 	validates :text, presence: true, length: { minimum: 5, maximum: 100 }
 	validates :description, presence: true, length: { minimum: 11, maximum: 400 }
 	mount_uploader :picture, PictureUploader
 	validate :picture_size
+
+	def thumbs_up_total
+		self.follow_questions.where(follow: true).size
+	end
+
+	def thumbs_down_total
+		self.follow_questions.where(follow: false).size
+	end
 
 	private
 
@@ -13,5 +22,5 @@ class Question < ActiveRecord::Base
 				errors.add(:picture, "should be less than 5MB")
 			end
 		end
-
+		
 end

@@ -17,6 +17,7 @@
 		<div class="well">
 			<p><strong>Details about question</strong></p>
 			<%= simple_format(@question.description) %>
+			<%= render 'follow_question', question: @question %>
 		</div>
 		
 	</div>

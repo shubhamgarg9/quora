@@ -1,0 +1,9 @@
+<!-- for follow or unfollw the question -->
+<div class="pull-right">
+	<%= link_to follow_question_question_path(question, follow: true), method: :post do %>
+		<i class="glyphicon glyphicon-hand-up" ></i> &nbsp <%= question.thumbs_up_total %>
+	<% end %> &nbsp&nbsp&nbsp&nbsp          <!-- &nbsp is for providing spaces -->
+	<%= link_to follow_question_question_path(question, follow: false), method: :post do %>
+		<i class="glyphicon glyphicon-hand-down" ></i>&nbsp <%= question.thumbs_down_total %>
+	<% end %>
+</div>

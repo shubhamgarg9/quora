@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
 
 	def index
-		@questions = Question.all	
+		@questions = Question.all.sort_by{|follow_questions| follow_questions.thumbs_up_total}.reverse
 	end
 
 	def show
@@ -32,9 +32,21 @@ class QuestionsController < ApplicationController
 		@question = Question.find(params[:id])
 		if @question.update(question_params)
 			flash[:success] = "question updated"
-			redirect_to question_path(@question)
+			redirect_to question_path(@question)		
 		else
 			redirect_to :edit
+		end
+	end
+
+	def follow_question
+		@question = Question.find(params[:id])
+		follow = FollowQuestion.create(follow: params[:follow], user: User.find(4), question: @question)
+		if follow.valid?
+			flash[:success] = "your selection was successful"
+			redirect_to :back
+		else
+			flash[:danger] = "you can follow or unfollow only once"
+			redirect_to :back
 		end
 	end
 
