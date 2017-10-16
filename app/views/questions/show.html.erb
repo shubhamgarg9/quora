@@ -5,23 +5,59 @@
 		<%= link_to gravatar_for(@question.user, size: 200), user_path(@question.user) %>
 		<p><h5>Question asked by: <%= @question.user.username %></h5></p>
 	</div>
+	
+
 	<div class="col-md-8">
+		<!-- to display question -->
 		<% if logged_in? and @question.user == current_user %>
 			<%= link_to "edit question", edit_question_path(@question), class: "btn btn-success pull-right" %>
 		<% end %>
 		<h3><%= @question.text %></h3>
 
 		<div class="show_question">
-			<%= image_tag(@question.picture.url, class: "gravatar") if @question.picture? %>
+			<%= image_tag(@question.picture.url, size: "400x250", class: "gravatar") if @question.picture? %>
 		</div>
 		
 		<div class="well">
 			<p><strong>Details about question</strong></p>
 			<%= simple_format(@question.description) %>
 			<%= render '/shared/follow_question', question: @question %>
+			<br/><br/><br/><br/>
+	 		<!-- for getting input of answers -->
+			<%= form_tag('/answrs', method: :post) do %>
+				<%= hidden_field_tag :id , @question.id %>
+				<%= label_tag :answer%>
+				<%= text_area_tag :answer %>
+				<%= submit_tag :submit, class: "col-md-3 btn btn-success pull-right" %>
+			<% end %>
+			<br/><br/><hr>
 		</div>
-		
+
+			<!-- for showing existing answers -->
+			<div class="comments-container">
+				<% @answers.each do |answer| %>
+					<ul id="comments-list" class="comments-list">
+						<li>
+							<div class="comment-main-level">
+							<!-- Avatar -->
+								<div class="comment-avatar"><%= link_to gravatar_for(answer.user), user_path(answer.user) %></div>
+								<!-- Contenedor del Comentario -->
+									<div class="comment-box">
+										<div class="comment-head">
+											<h6 class="comment-name"><%= link_to answer.user.username, user_path(answer.user) %></h6>
+											<span><%= time_ago_in_words(answer.created_at) %> ago</span>
+ 										</div>
+										<div class="comment-content">
+											<%= answer.text %>
+										</div>
+									</div>
+							</div>
+						</li>
+					</ul>
+				<% end %>
+			</div>
 	</div>
+
 </div>
 
 <h5><%= link_to "return to home", questions_path, class: "btn btn-success btn-small" %></h5>

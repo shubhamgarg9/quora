@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+	has_many :answrs
 	has_many :questions
 	has_many :follow_questions
 	before_save { self.email = email.downcase }

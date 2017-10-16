@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171015085906) do
+ActiveRecord::Schema.define(version: 20171016123150) do
+
+  create_table "answers", force: :cascade do |t|
+    t.string   "text"
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id"
+  add_index "answers", ["user_id"], name: "index_answers_on_user_id"
+
+  create_table "answrs", force: :cascade do |t|
+    t.string   "text"
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "answrs", ["question_id"], name: "index_answrs_on_question_id"
+  add_index "answrs", ["user_id"], name: "index_answrs_on_user_id"
 
   create_table "follow_questions", force: :cascade do |t|
     t.boolean  "follow"

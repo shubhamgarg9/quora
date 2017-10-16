@@ -1,5 +1,6 @@
 class Question < ActiveRecord::Base
 	belongs_to :user
+	has_many :answrs
 	has_many :follow_questions
 	validates :user_id, presence: true
 	validates :text, presence: true, length: { minimum: 5, maximum: 100 }
