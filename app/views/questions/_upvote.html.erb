@@ -1,0 +1,9 @@
+<!-- to upvote or downvote the answer -->
+<div class="pull-right">
+	<%= link_to upvote_question_path(question, upvote: true, answer: answer), method: :post do %>
+		<i class="glyphicon glyphicon-upload" ></i> &nbsp <%= answer.thumbs_up_total %>
+	<% end %> &nbsp&nbsp&nbsp&nbsp          <!-- &nbsp is for providing spaces -->
+	<%= link_to upvote_question_path(question, upvote: false, answer: answer), method: :post do %>
+		<i class="glyphicon glyphicon-download" ></i>&nbsp <%= answer.thumbs_down_total %>
+	<% end %>
+</div>

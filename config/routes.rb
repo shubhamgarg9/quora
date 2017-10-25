@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :questions do
   	member do
   		post 'follow_question'
+      post 'upvote'
   	end
   end
 

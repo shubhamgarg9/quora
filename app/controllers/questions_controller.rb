@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
 
 	before_action :set_question, only: [:edit, :update, :show, :follow_question]
-	before_action :require_user, except: [:show,:index]
+	before_action :require_user, except: [:show, :index]
 	before_action :require_same_user, only: [:edit, :update]
 
 	def index
@@ -51,6 +51,20 @@ class QuestionsController < ApplicationController
 			redirect_to :back
 		end
 	end
+
+	def upvote
+		@question = Question.find(params[:id])
+		@answer = Answr.find(params[:answer])
+		upvote = Upvote.create(upvote: params[:upvote], user: current_user, answr: @answer)
+		if upvote.valid?
+			flash[:success] = "your selection was successful"
+			redirect_to question_path(@question)
+		else
+			flash[:danger] = "you can follow or unfollow only once"
+			redirect_to question_path(@question)
+		end
+	end
+
 
 	private
 

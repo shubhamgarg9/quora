@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171016123150) do
+ActiveRecord::Schema.define(version: 20171024124256) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "text"
@@ -54,6 +54,15 @@ ActiveRecord::Schema.define(version: 20171016123150) do
     t.integer  "user_id"
     t.string   "picture"
   end
+
+  create_table "upvotes", force: :cascade do |t|
+    t.boolean "upvote"
+    t.integer "user_id"
+    t.integer "answr_id"
+  end
+
+  add_index "upvotes", ["answr_id"], name: "index_upvotes_on_answr_id"
+  add_index "upvotes", ["user_id"], name: "index_upvotes_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "username"

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	has_many :answrs
 	has_many :questions
+	has_many :upvotes
 	has_many :follow_questions
 	before_save { self.email = email.downcase }
 	validates :username, presence: true, length: { minimum: 3 , maximum: 40 }
